@@ -1,1 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusCare | Student Support Portal</title>
 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f8fc;
+            color: #243047;
+            line-height: 1.6;
+        }
+
+        /* Navigation bar */
+        header {
+            background-color: #ffffff;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #146c5b;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #374151;
+            margin-left: 25px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #146c5b;
+        }
+
+        .login-btn {
+            background-color: #146c5b;
+            color: white !important;
+            padding: 10px 18px;
+            border-radius: 6px;
+        }
+
+        /* Hero section */
+        .hero {
+            min-height: 440px;
+            padding: 80px 8%;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #e5f6f0, #eef3ff);
+        }
+
+        .hero-content {
+            max-width: 720px;
+        }
+
+        .tagline {
+            color: #146c5b;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 1.5px;
+        }
+
+        .hero h1 {
+            font-size: 46px;
+            line-height: 1.2;
+            margin: 18px 0;
+            color: #172b4d;
+        }
+
+        .hero h1 span {
+            color: #16836c;
+        }
+
+        .hero p {
+            color: #5c667a;
+            font-size: 17px;
+            max-width: 600px;
+            margin-bottom: 28px;
+        }
+
+        .primary-btn {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #146c5b;
+            color: white;
+            padding: 14px 25px;
+            border-radius: 7px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .primary-btn:hover {
+            background-color: #0d5043;
+            transform: translateY(-2px);
+        }
+
+        .secondary-btn {
+            display: inline-block;
+            text-decoration: none;
+            color: #146c5b;
+            padding: 14px 22px;
+            margin-left: 8px;
+            font-weight: bold;
+        }
+
+        /* Problem categories */
+        .categories {
+            padding: 65px 8%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 31px;
+            color: #172b4d;
+            margin-bottom: 10px;
+        }
+
+        .section-description {
+            color: #6b7280;
+            margin-bottom: 35px;
+        }
+
+        .category-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            text-align: left;
+        }
+
+        .category-card {
+            background: white;
+            padding: 28px 24px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(20, 40, 70, 0.06);
+            border: 1px solid #e8edf3;
+            transition: 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(20, 40, 70, 0.10);
+        }
+
+        .category-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .category-card h3 {
+            margin-bottom: 9px;
+            color: #172b4d;
+        }
+
+        .category-card p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        /* How it works */
+        .how-it-works {
+            padding: 55px 8%;
+            background-color: #ffffff;
+            text-align: center;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 35px;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background-color: #dff4ec;
+            color: #146c5b;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .step h3 {
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #172b3d;
+            color: #ffffff;
+            text-align: center;
+            padding: 25px 8%;
+            font-size: 14px;
+        }
+
+        footer p {
+            margin: 4px 0;
+        }
+
+        /* Responsive design for phones */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 18px 5%;
+            }
+
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 14px;
+            }
+
+            nav a {
+                margin-left: 0;
+            }
+
+            .hero {
+                padding: 60px 6%;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .category-container,
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .categories,
+            .how-it-works {
+                padding: 45px 6%;
+            }
+
+            .secondary-btn {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="logo">CampusCare.</div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#problems">Problem Categories</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#contact">Contact</a>
+            <a href="#" class="login-btn">Login</a>
+        </nav>
+    </header>
+
+    <!-- Hero section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="tagline">Your Campus, Your Voice</div>
+
+            <h1>
+                Speak Up. Report Problems.
+                <span>Make Campus Better.</span>
+            </h1>
+
+            <p>
+                CampusCare is a student support portal where you can
+                report classroom issues, accidents, safety concerns,
+                and other university problems. Your voice matters.
+            </p>
+
+            <a href="#problems" class="primary-btn">
+                Explore Problems &rarr;
+            </a>
+
+            <a href="#how-it-works" class="secondary-btn">
+                Learn More
+            </a>
+        </div>
+    </section>
+
+    <!-- Problem categories -->
+    <section class="categories" id="problems">
+        <h2 class="section-title">What Problem Are You Facing?</h2>
+
+        <p class="section-description">
+            Choose a category to help us understand your concern.
+        </p>
+
+        <div class="category-container">
+
+            <div class="category-card">
+                <div class="category-icon">&#127979;</div>
+                <h3>Classroom Issues</h3>
+                <p>
+                    Report broken equipment, timetable conflicts,
+                    classroom shortages, or other academic issues.
+                </p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">&#128657;</div>
+                <h3>Accident Reports</h3>
+                <p>
+                    Report campus accidents, injuries, or incidents
+                    that require attention from university staff.
+                </p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">&#128736;</div>
+                <h3>Facilities & Maintenance</h3>
+                <p>
+                    Report broken lights, water supply issues,
+                    damaged furniture, or sanitation problems.
+                </p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">&#128737;</div>
+                <h3>Safety & Security</h3>
+                <p>
+                    Raise concerns about unsafe areas, security
+                    problems, or campus hazards.
+                </p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">&#128101;</div>
+                <h3>Student Affairs</h3>
+                <p>
+                    Share concerns related to student services,
+                    campus activities, or student welfare.
+                </p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">&#128172;</div>
+                <h3>Other Problems</h3>
+                <p>
+                    Report any other university-related problem
+                    that does not fit into the categories above.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-it-works" id="how-it-works">
+        <h2 class="section-title">How CampusCare Works</h2>
+
+        <p class="section-description">
+            Three simple steps to make your campus better.
+        </p>
+
+        <div class="steps">
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Report Your Problem</h3>
+                <p>
+                    Describe the issue and provide the necessary details.
+                </p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>University Reviews It</h3>
+                <p>
+                    The responsible university team reviews the report.
+                </p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Track the Solution</h3>
+                <p>
+                    Check the report status and follow its progress.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <p><strong>CampusCare</strong> — Student Support Portal</p>
+        <p>Building a safer, better campus together.</p>
+        <p>&copy; 2026 CampusCare. University Project.</p>
+    </footer>
+
+</body>
+</html>
