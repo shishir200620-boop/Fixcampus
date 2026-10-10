@@ -416,6 +416,45 @@
         <p>Building a safer, better campus together.</p>
         <p>&copy; 2026 CampusCare. University Project.</p>
     </footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
 
+<script>
+async function checkLogin() {
+    const supabase = window.campuscareSupabase;
+
+    if (!supabase) return;
+
+    const { data: { user }, error } =
+        await supabase.auth.getUser();
+
+    if (error || !user) return;
+
+    const name =
+        user.user_metadata?.full_name || user.email;
+
+    console.log("Logged-in user:", name);
+
+    // Replace the login button with the user's name and logout button.
+    const loginButton = document.getElementById("loginLink");
+
+    if (loginButton) {
+        const greeting = document.createElement("span");
+        greeting.textContent = "Welcome, " + name + " ";
+
+        const logoutButton = document.createElement("button");
+        logoutButton.textContent = "Logout";
+
+        logoutButton.onclick = async () => {
+            await supabase.auth.signOut();
+            window.location.reload();
+        };
+
+        loginButton.replaceWith(greeting, logoutButton);
+    }
+}
+
+checkLogin();
+</script>
 </body>
 </html>
